@@ -7,6 +7,8 @@ package com.das.controller;
 
 import com.das.model.User;
 import com.das.persistenceImp.UserImp;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -31,12 +33,17 @@ public class service {
     }
     
     @WebMethod(operationName = "insert")
-    public boolean  insert(@WebParam(name = "nombre") String nombre ,@WebParam(name = "apellido") String apellido, @WebParam(name = "cedula") String cedula) throws Exception {
-        User user = new User();
-        user.setNombre(nombre);
-        user.setApellido(apellido);
-        user.setCedula(cedula);
-        return userimp.insertUser(user);
+    public boolean  insert(@WebParam(name = "nombre") String nombre ,@WebParam(name = "apellido") String apellido, @WebParam(name = "cedula") String cedula)  {
+        try {
+            User user = new User();
+            user.setNombre(nombre);
+            user.setApellido(apellido);
+            user.setCedula(cedula);
+            return userimp.insertUser(user);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
         
     }
     
