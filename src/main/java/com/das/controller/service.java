@@ -18,10 +18,12 @@ import javax.jws.WebParam;
 @WebService(serviceName = "service")
 public class service {
 
-    private UserImp userimp = new UserImp();
+    private final UserImp userimp = new UserImp();
     
     /**
      * This is a sample web service operation
+     * @param txt
+     * @return 
      */
     @WebMethod(operationName = "hello")
     public String hello(@WebParam(name = "name") String txt) {
