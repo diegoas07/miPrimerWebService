@@ -5,19 +5,19 @@
  */
 package com.das.persistence;
 
-import java.io.FileInputStream;
-import java.io.InputStream;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Properties;
+
 
 /**
  *
  * @author diego
  */
+
 public class Persistence {
     	public static String nombreClase = "Persistencia";	
         private String host;
@@ -30,10 +30,10 @@ public class Persistence {
 //            InputStream in = null;
 //            in = new FileInputStream("main/resources/configuracion.properties");
 //            properties.load(in);    
-            host = "LOCALHOST"; //properties.getProperty("server.name");
+            host = "SOPORTE1"; //properties.getProperty("server.name");
             bd= "person"; //properties.getProperty("server.bd");
-            name= "root";//properties.getProperty("server.user");
-            pw= "1234";//properties.getProperty("server.pw");
+            name= "Admin";//properties.getProperty("server.user");
+            pw= "devSolutionCo2016";//properties.getProperty("server.pw");
             port ="3306"; //properties.getProperty("server.port");
 	}
 	private Connection conexion;
@@ -48,9 +48,9 @@ public class Persistence {
 	public Persistence conectar() throws Exception {
 	try{
 	        Class.forName("com.mysql.jdbc.Driver");
-	        String BaseDeDatos = "jdbc:mysql://" + host + ":" + port + "/" + bd + "?useSSL=false"; 
-	        setConexion(DriverManager.getConnection(BaseDeDatos, name,pw));            
-	        getConexion().setAutoCommit(false);
+                String BaseDeDatos = "jdbc:mysql://" + host + ":" + port + "/" + bd + "?useSSL=true";
+                setConexion(DriverManager.getConnection(BaseDeDatos, name, pw));
+                getConexion().setAutoCommit(false);
 	        if (getConexion() == null) {
 	           Exception errorConexion1 = new Exception("conexion con base de datos 1");
 	           throw errorConexion1;

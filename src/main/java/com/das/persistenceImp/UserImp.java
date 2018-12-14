@@ -20,7 +20,7 @@ public class UserImp  implements UserInt{
     
     @Override
     public boolean insertUser(User user) throws Exception {
-        String sql = "insert into users (nombre, apellido, cedula) values ('"+user.getNombre()+"','"+user.getApellido()+"',"+user.getCedula()+",)";
+        String sql = "insert into users (nombre, apellido, cedula) values ('"+user.getNombre()+"','"+user.getApellido()+"','"+user.getCedula()+"')";
         persistencia = new Persistence();
         persistencia.conectar();
         return persistencia.escribir(sql);
@@ -28,7 +28,8 @@ public class UserImp  implements UserInt{
 
     @Override
     public User findUser(User user) throws Exception {
-        String sql = "select nombre, apellido, cedula, id from user where cedula="+user.getCedula();
+        String sql = "select nombre, apellido, cedula, id from users where cedula="+user.getCedula();
+        System.err.println("select: "+sql);
         persistencia = new Persistence();
         persistencia.conectar();
         ResultSet result = persistencia.consultar(sql);
@@ -52,7 +53,7 @@ public class UserImp  implements UserInt{
 
     @Override
     public boolean updateUser(User user) throws Exception {
-        String sql = "update users set nombre ='"+user.getNombre()+"' , apellido ='"+user.getApellido()+"'  where cedula = "+user.getCedula();
+        String sql = "update users set nombre ='"+user.getNombre()+"' , apellido ='"+user.getApellido()+"'  where cedula = '"+user.getCedula()+"'";
         persistencia = new Persistence();
         persistencia.conectar();
         return persistencia.escribir(sql);
