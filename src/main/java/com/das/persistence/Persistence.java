@@ -26,15 +26,15 @@ public class Persistence {
         private String pw;
         private String port;
 	public Persistence() throws Exception{
-            Properties properties = new Properties();
-            InputStream in = null;
-            in = new FileInputStream("resources/configuracion.properties");
-            properties.load(in);    
-            host = properties.getProperty("server.name");
-            bd= properties.getProperty("server.bd");
-            name= properties.getProperty("server.user");
-            pw= properties.getProperty("server.pw");
-            port = properties.getProperty("server.port");
+//            Properties properties = new Properties();
+//            InputStream in = null;
+//            in = new FileInputStream("main/resources/configuracion.properties");
+//            properties.load(in);    
+            host = "LOCALHOST"; //properties.getProperty("server.name");
+            bd= "person"; //properties.getProperty("server.bd");
+            name= "root";//properties.getProperty("server.user");
+            pw= "1234";//properties.getProperty("server.pw");
+            port ="3306"; //properties.getProperty("server.port");
 	}
 	private Connection conexion;
         
